@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TomatoDoc – Tomato Leaf Disease Detector</title>
+<meta name="description" content="Upload a tomato leaf photo and get an instant AI diagnosis with organic and chemical treatment tips.">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header><div class="wrap"><span class="logo">🍅 TomatoDoc</span><span class="tag">AI tomato leaf disease detector</span></div></header>
+<main class="wrap">
+  <section class="card">
+    <h1>Check your tomato plant</h1>
+    <p class="muted">Upload a clear, close-up photo of a <b>single tomato leaf</b> in good light. Other plants are not supported.</p>
+    <label id="drop" class="drop" tabindex="0">
+      <input type="file" id="file" accept="image/*" hidden>
+      <div id="dropText"><div class="big">📷</div><b>Tap to take or choose a photo</b><br><span class="muted">or drag &amp; drop here · JPG / PNG · max 8 MB</span></div>
+      <img id="preview" alt="Selected leaf preview" hidden>
+    </label>
+    <div class="actions">
+      <button id="analyze" disabled>Analyze leaf</button>
+      <button id="reset" class="ghost" hidden>Clear</button>
+    </div>
+  </section>
+  <section id="result" class="card" hidden aria-live="polite"></section>
+</main>
+<footer class="wrap muted">AI predictions can be wrong. Treat results as guidance, follow pesticide label instructions, and consult a local agricultural extension officer for serious outbreaks.</footer>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
