@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TomatoDoc — AI Tomato Leaf Disease Detector</title>
+  <meta name="description" content="Upload a tomato leaf photo and get an instant AI diagnosis with organic and chemical treatment protocols.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand" aria-label="TomatoDoc Home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>TomatoDoc</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#guide">Photo Guide</a>
+        <a href="#scanner" class="nav-cta">Scan a Leaf</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero / Landing Section -->
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <div class="eyebrow reveal">AI-Powered Crop Diagnostics</div>
+        <h1 class="reveal">Diagnose tomato leaf diseases in seconds.</h1>
+        <p class="hero-sub reveal">
+          Snap or upload a single leaf photo for instant disease detection, confidence scoring, and actionable organic, chemical, and prevention protocols.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="#scanner" class="btn primary" id="startBtn">
+            Start Diagnosis
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#guide" class="btn ghost">Photo Guidelines</a>
+        </div>
+
+        <div class="metrics reveal">
+          <div class="metric">
+            <strong>Instant</strong>
+            <span>On-demand AI inference</span>
+          </div>
+          <div class="metric">
+            <strong>Dual Plans</strong>
+            <span>Organic &amp; chemical care</span>
+          </div>
+          <div class="metric">
+            <strong>Mobile Ready</strong>
+            <span>Auto-optimized uploads</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Guidelines Section -->
+    <section id="guide" class="guide-section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">For Best Accuracy</span>
+          <h2>Capture a clean leaf sample</h2>
+        </div>
+        <div class="guide-grid">
+          <article class="guide-item reveal">
+            <div class="guide-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+            </div>
+            <h3>Single Tomato Leaf</h3>
+            <p>Focus closely on one tomato leaf so lesions, spots, and vein discoloration are sharp. Other plant species are not supported.</p>
+          </article>
+
+          <article class="guide-item reveal">
+            <div class="guide-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </div>
+            <h3>Even Natural Daylight</h3>
+            <p>Shoot in bright, indirect daylight. Avoid harsh camera flash or deep shadows that can distort leaf color.</p>
+          </article>
+
+          <article class="guide-item reveal">
+            <div class="guide-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+            </div>
+            <h3>Plain Background</h3>
+            <p>Hold the leaf against soil, sky, or a neutral surface so the model isolates the target leaf cleanly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Model / Diagnostic Workspace -->
+    <section id="scanner" class="scanner-section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Diagnostic Model</span>
+          <h2>Analyze your leaf</h2>
+          <p class="muted">Upload a JPG or PNG image up to 8 MB. Images are automatically resized on-device for faster mobile uploads.</p>
+        </div>
+
+        <div class="panel reveal">
+          <label id="drop" class="drop" tabindex="0" aria-label="Upload tomato leaf image">
+            <input type="file" id="file" accept="image/*" hidden>
+
+            <div id="dropText" class="drop-empty">
+              <div class="upload-ring" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+              </div>
+              <strong>Tap to take or choose a photo</strong>
+              <span class="muted">or drag &amp; drop here &middot; JPG / PNG &middot; max 8 MB</span>
+            </div>
+
+            <div id="previewWrap" class="preview-wrap" hidden>
+              <img id="preview" alt="Selected tomato leaf preview">
+              <div id="scanOverlay" class="scan-overlay" hidden aria-hidden="true">
+                <div class="scan-line"></div>
+              </div>
+            </div>
+          </label>
+
+          <div class="panel-footer">
+            <span id="fileMeta" class="file-meta muted">No image selected</span>
+            <div class="actions">
+              <button id="reset" type="button" class="btn ghost" hidden>Clear</button>
+              <button id="analyze" type="button" class="btn primary" disabled>Analyze Leaf</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Container -->
+        <section id="result" class="panel result-panel" hidden aria-live="polite"></section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>AI predictions can be wrong. Treat results as guidance, follow pesticide label instructions, and consult a local agricultural extension officer for serious outbreaks.</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
